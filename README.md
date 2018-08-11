@@ -55,6 +55,15 @@
 * Crea un catálogo en /home llamado hackaton. Se solicita a su grupo respectivo que sea el grupo de opencommuity. Los usuarios del grupo pueden leer y escribir, mientras que otros usuarios no pueden
      
      
+ * 24 Crear un archivo de configuración de repositorio en Yum, apuntando a http://server.example.com/pub/centos7/repo/
+#cat <<EOF > /etc/yum.repos.d/centos.repo
+#[centos]
+#name=centos7
+#metadata = yum
+#baseurl=http://server.example.com/pub/centos7/repo/
+#enabled=1
+#gpgcheck=0
+#EOF
      
      
      
