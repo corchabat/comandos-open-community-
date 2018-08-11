@@ -54,7 +54,16 @@
      
 * Crea un catálogo en /home llamado hackaton. Se solicita a su grupo respectivo que sea el grupo de opencommuity. Los usuarios del grupo pueden leer y escribir, mientras que otros usuarios no pueden
      
+     #mkdir /home/hackaton
+     #chown :opencommunity /home/hackaton
+     #chmod 760 /home/hackaton
      
+* Busque los archivos propiedad de OpenCommunity y cópielos al catálogo: /opt/dir
+     
+     #find . -group opencommunity -exec cp -Rf {} /opt/dir \;
+
+
+
      
      
      
