@@ -1,4 +1,4 @@
-# comandos-open-community
+# hackathon-open-community
 
 
 * Cambiar el nombre de host a myhost.opencommunity.org 
@@ -58,9 +58,30 @@
      #chown :opencommunity /home/hackaton
      #chmod 760 /home/hackaton
      
+     ![hacaton_10](https://user-images.githubusercontent.com/40834361/44064038-c87b1f2c-9f28-11e8-8c10-4d5e20674dca.png)
+     
 * Busque los archivos propiedad de OpenCommunity y cópielos al catálogo: /opt/dir
      
      #find . -group opencommunity -exec cp -Rf {} /opt/dir \;
+     
+     ![hackaton_12](https://user-images.githubusercontent.com/40834361/44064039-c8922dfc-9f28-11e8-957d-e9065e02c86f.png)
+     
+* Cree un grupo de volúmenes y configure 8M como una extensión. Dividir un grupo de volúmenes que contiene 50 y que se extienda en el grupo de volúmenes lv (lvshare), convertirlo en un sistema de archivos ext4 que se monte automáticamente bajo /mnt/data con tamaño variable en un rango entre 380M y 400M.
+
+     #fdisk /dev/vdb
+      n: partición nueva
+      p: partición primaria
+      inicio default
+      +400M
+      t: tipo Linux LVM (8e)
+      w: guardar cambios
+      
+     #partprobe
+     #pvcreate /dev/vdb1
+     #vgcreate vg-opencom -s 8M /dev/vdb1
+     #lvcreate /dev/vg-opencom -n lvshare -l 50
+     
+     ![hackaton_13](https://user-images.githubusercontent.com/40834361/44064040-c8c9098a-9f28-11e8-9d32-9bc015f8155b.png)
 
 
 
